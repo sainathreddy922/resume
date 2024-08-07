@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sainath Reddy - Data Analyst Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #ff4081;
+            --background-color: #f5f5f5;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            animation: rotate 20s linear infinite;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        header * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        .section {
+            background-color: #fff;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        .skill {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        .project2-image{
+            height: 180px;
+            width: 1050px;
+        }
+        .project {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .project1-image{
+            height: 20vh;
+            width: 160vh;
+
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-tags {
+            margin-top: 10px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 5px 10px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .certificate-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .certificate {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate:hover {
+            transform: scale(1.05);
+        }
+        
+        .certificate img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .certificate-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate:hover .certificate-overlay {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sainath Reddy</h1>
+        <p>Data Analyst | Insights Explorer</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#qualifications">Qualifications</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>Aspiring data analyst with a strong foundation in data manipulation, statistical analysis, and visualization. Proficient in Python, SQL, and Excel. Eager to contribute analytical skills to drive data-informed decision-making.</p>
+        </section>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skill">Data Analysis</div>
+            <div class="skill">SQL</div>
+            <div class="skill">Power Bi</div>
+            <div class="skill">Python</div>
+            <div class="skill">Excel</div>
+        </section>
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <img src="./sainathimg4.jpg" alt="Car Sales Dashboard" class="project1-image">
+                <div class="project-content">
+                    <h3>Car Sales Dashboard</h3>
+                    <p>•	Using Power BI and advanced DAX, I examined car sales data and discovered a 15% decline in sales over six months and developed strategies that improved customer satisfaction by 20%.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Power Bi</span>
+                        <span class="project-tag">Data Transformation</span>
+                        <span class="project-tag">Data Visualization</span>
+                    </div>
+                    <a href="https://www.novypro.com/profile_projects/sainathreddy?Popup=memberProject&Data=1709124410991x579581301613765200">View Project</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./sainathimg5.jpg" alt="ATLIQ HARDWARE SALES INSIGHTS" class="project-image">
+                <div class="project-content">
+                    <h3>ATLIQ HARDWARE SALES INSIGHTS</h3>
+                    <p>•   I Analyzed sales data to identify a 12% gap in market share compared to competitors, visualizing insights that drove strategic initiatives.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Power Bi</span>
+                        <span class="project-tag">DAX</span>
+                        <span class="project-tag"> Data Visualization</span>
+                    </div>
+                    <a href="https://www.novypro.com/profile_projects/sainathreddy?Popup=memberProject&Data=1709124867260x715185110736591200">View Project</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./sainathimg6.jpg" alt="Predictive Maintenance Analysis" class="project2-image">
+                <div class="project-content">
+                    <h3>IPL DATA ANALYSIS</h3>
+                    <p>•	In the IPL Data Analysis project, I conducted detailed SQL analysis on a dataset comprising over 50,000 records of IPL matches and deliveries. 
+- By leveraging advanced SQL techniques, I uncovered key trends that significantly enhanced analytical insights, increasing the depth and accuracy of our findings by 40%.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">Windows Function</span>
+                        <span class="project-tag">Excel</span>
+                    </div>
+                    <a href="https://github.com/sainathreddy922/SQL-case-study-on-IPL-data-analysis">View Project</a>
+                </div>
+            </div>
+        </section>
+        <section id="certifications" class="section">
+            <h2>Certifications</h2>
+            <div class="certificate-gallery">
+                <div class="certificate">
+                    <img src="./sainathimg.jpg" alt="Power BI Certificate">
+                    <div class="certificate-overlay">Power BI Professional Certificate</div>
+                </div>
+                <div class="certificate">
+                    <img src="./sainathimg2.jpg" alt="IBM Data Science Certificate">
+                    <div class="certificate-overlay">IBM Data Science Professional Certificate</div>
+                </div>
+                <div class="certificate">
+                    <img src="./sainathimg3.jpg" alt="Microsoft Data Analyst Certificate">
+                    <div class="certificate-overlay">Microsoft Certified: Data Analyst Associate</div>
+                </div>
+            </div>
+        </section>
+        <section id="qualifications" class="section">
+            <h2>Qualifications</h2>
+            <ul>
+                <li>Bachelor of Technology in Computer Science, NARASIMHA REDDY ENGINEERING COLLEGE HYDERABAD (2019-2023)</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        function checkVisibility() {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                var rect = section.getBoundingClientRect();
+                var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                if (!(rect.bottom < 0 || rect.top - viewHeight >= 0)) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('resize', checkVisibility);
+        checkVisibility();
+    </script>
+</body>
+</html>
